@@ -1,0 +1,29 @@
+{
+  "name": "myapp",
+  "version": "0.0.0",
+  "description": "Portfolio website made with ExpressJS",
+  "private": true,
+  "scripts": {
+    "start": "node ./www.js"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.0",
+    "bootstrap": "^5.2.2",
+    "connect": "^3.7.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.8",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "icons": "^1.0.0",
+    "jquery": "^3.6.1",
+    "mongoose": "^6.7.1",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "engines": {
+    "node": "18.12.0"
+  }
+}
