@@ -3,19 +3,19 @@ let router = express.Router();
 let mongoose = require('mongoose');
 
 //connect with database model
-let assignment = require('../models/assignments');
+let incident = require('../models/incidents');
 
 /* CRUD Operations */
 module.exports.displayDatabase = (req, res, next) => {
-    assignment.find((err, assignmentsList) => {
+    incident.find((err, incidentsList) => {
         if(err) {
             return console.error(err);
         }
         else {
-            // console.log(assignmentsList);
-            res.render('assignment/list', {
-                title:'Assignment List', 
-                assignmentsList: assignmentsList
+            // console.log(incidentsList);
+            res.render('incident/list', {
+                title:'incident List', 
+                incidentsList: incidentsList
             });
         }
     });
@@ -23,14 +23,14 @@ module.exports.displayDatabase = (req, res, next) => {
 
 // Display add page
 module.exports.displayAddPage = (req, res, next) => {
-    res.render('assignment/add', {
-        title: 'Add Assignment' 
+    res.render('incident/add', {
+        title: 'Add incident' 
     });
 }
 
 // Process add page
 module.exports.processAddPage = (req, res, next) => {
-    let newAssignment = assignment({
+    let newincident = incident({
         "course": req.body.course,
         "title": req.body.title,
         "description": req.body.description,
@@ -38,12 +38,12 @@ module.exports.processAddPage = (req, res, next) => {
         "due": req.body.due
     });
 
-    assignment.create(newAssignment, (err, assignment) => {
+    incident.create(newincident, (err, incident) => {
         if(err) {
             console.log(err);
             res.end(err);
         } else {
-            res.redirect('/assignment-list');
+            res.redirect('/incident-list');
         }
     });
 }
@@ -51,14 +51,14 @@ module.exports.processAddPage = (req, res, next) => {
 // Display edit page
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
-    assignment.findById(id, (err, assignmentToEdit) => {
+    incident.findById(id, (err, incidentToEdit) => {
         if(err) {
             console.log(err);
             res.end(err);
         } else {
-            res.render('assignment/edit', {
-                title: 'Edit assignment',
-                assignment: assignmentToEdit
+            res.render('incident/edit', {
+                title: 'Edit incident',
+                incident: incidentToEdit
             });
         }
     });
@@ -67,7 +67,7 @@ module.exports.displayEditPage = (req, res, next) => {
 // Process edit page
 module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id;
-    let updateAssignment = assignment({
+    let updateincident = incident({
         "_id": id,
         "course": req.body.course,
         "title": req.body.title,
@@ -76,12 +76,12 @@ module.exports.processEditPage = (req, res, next) => {
         "due": req.body.due
     });
 
-    assignment.updateOne({_id: id}, updateAssignment, (err) => {
+    incident.updateOne({_id: id}, updateincident, (err) => {
         if(err) {
             console.log(err);
             res.end(err);
         } else {
-            res.redirect('/assignment-list');
+            res.redirect('/incident-list');
         }
     });
 }
@@ -89,12 +89,12 @@ module.exports.processEditPage = (req, res, next) => {
 // Perform delete action
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
-    assignment.deleteOne({_id: id}, (err) => {
+    incident.deleteOne({_id: id}, (err) => {
         if(err) {
             console.log(err);
             res.end(err);
         } else {
-            res.redirect('/assignment-list');
+            res.redirect('/incident-list');
         }
     });
 }
