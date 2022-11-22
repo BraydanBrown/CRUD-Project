@@ -37,11 +37,13 @@
                             <!-- display column number -->
                             <td scope="col"><%= count+1 %></th>
                             <!-- display incident documents -->
-                            <td scope="col"><%= incidentsList[count].course %></td>
-                            <td scope="col"><%= incidentsList[count].title %></td>
+                            <td scope="col"><%= incidentsList[count].customer %></td>
+                            <td scope="col"><%= incidentsList[count].date %></td>
+                            <td scope="col"><%= incidentsList[count].time %></td>
+                            <td scope="col"><%= incidentsList[count].location %></td>
+                            <td scope="col"><%= incidentsList[count].reporter %></td>
                             <td scope="col"><%= incidentsList[count].description %></td>
-                            <td scope="col"><%= incidentsList[count].weight %></td>
-                            <td scope="col"><%= incidentsList[count].due %></td>
+
 
                             <!-- Edit and Delete buttons used for delete and edit operations -->
                             <td scope="col"><a href="/incident-list/edit/<%= incidentsList[count]._id %>" class="btn btn-primary" role="button">Edit</a></td>
