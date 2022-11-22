@@ -2,23 +2,33 @@
 <%- include('../partials/main_nav.ejs') %>
 <main>
     <div class="jumbotron jumbotron-fluid flex-shrink-0 py-5">
-        <div class="container" id="dbPage">
+        <div class="container">
 
-            <form class="form" method="post" id="dbForm">
+            <form class="form" method="post">
     
+<<<<<<< Updated upstream:server/views/incident/edit.ejs
                 <h1>Edit incident</h1>
+=======
+                <h1>Edit Incident</h1>
+>>>>>>> Stashed changes:server/views/assignment/edit.ejs
     
                 <ul>
 
                     <div class="form-group">
                         <li>
+<<<<<<< Updated upstream:server/views/incident/edit.ejs
                             <input class="form-control" placeholder="Course Name" type="text" name="course" id="courseTextField" value="<%= incident.course%>" required>
                             <label class="visually-hidden" for="courseTextField">Course Name</label>
+=======
+                            <input class="form-control" placeholder="Course Name" type="text" name="course" id="courseTextField" value="<%= assignment.course%>" required>
+                            <label class="visually-hidden" for="courseTextField">Customer Name</label>
+>>>>>>> Stashed changes:server/views/assignment/edit.ejs
                         </li>
                     </div>
 
                     <div class="form-group">
                         <li>
+<<<<<<< Updated upstream:server/views/incident/edit.ejs
                             <input class="form-control" placeholder="incident Title" type="text" name="title" id="titleTextField" value="<%= incident.title%>" required>
                             <label class="visually-hidden" for="titleTextField">incident Title</label>
                         </li>
@@ -35,14 +45,45 @@
                         <li>
                             <input class="form-control" placeholder="Weight" type="number" min="0" max="100" name="weight" id="weightTextField" value="<%= incident.weight%>" required>
                             <label class="visually-hidden" for="weightTextField">incident Weight</label>
+=======
+                            <input class="form-control" placeholder="Assignment Title" type="text" name="title" id="titleTextField" value="<%= assignment.title%>" required>
+                            <label class="visually-hidden" for="titleTextField">Date of Incident</label>
+                        </li>
+                    </div>
+    
+    
+                    <div class="form-group">
+                        <li>
+                            <input class="form-control" placeholder="Weight" type="number" min="0" max="100" name="weight" id="weightTextField" value="<%= assignment.weight%>" required>
+                            <label class="visually-hidden" for="weightTextField">Time of Incident</label>
+>>>>>>> Stashed changes:server/views/assignment/edit.ejs
                         </li>
                     </div>
                         
                      
                     <div class="form-group">
                         <li>
+<<<<<<< Updated upstream:server/views/incident/edit.ejs
                             <input class="form-control" placeholder="Due Date" type="date" name="due" id="dueTextField" value="<%= incident.due%>" required>
                             <label class="visually-hidden" for="dueTextField">incident Due Date</label>
+=======
+                            <input class="form-control" placeholder="Due Date" type="date" name="due" id="dueTextField" value="<%= assignment.due%>" required>
+                            <label class="visually-hidden" for="dueTextField">Location of Incident</label>
+                        </li>
+                    </div>
+
+                    <div class="form-group">
+                        <li>
+                            <textarea class="form-control" placeholder="Description" type="text" name="description" id="descriptionTextField" required><%= assignment.description%></textarea>
+                            <label class="visually-hidden" for="descriptionTextField">Incident Description</label>
+                        </li>
+                    </div>
+
+                    <div class="form-group">
+                        <li>
+                            <input class="form-control" placeholder="Due Date" type="date" name="due" id="dueTextField" value="<%= assignment.due%>" required>
+                            <label class="visually-hidden" for="dueTextField">Reported By</label>
+>>>>>>> Stashed changes:server/views/assignment/edit.ejs
                         </li>
                     </div>
 
