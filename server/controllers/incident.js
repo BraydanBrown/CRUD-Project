@@ -14,7 +14,7 @@ module.exports.displayDatabase = (req, res, next) => {
         else {
             // console.log(incidentsList);
             res.render('incident/list', {
-                title:'incident List', 
+                title:'Incident List', 
                 incidentsList: incidentsList
             });
         }
@@ -24,7 +24,7 @@ module.exports.displayDatabase = (req, res, next) => {
 // Display add page
 module.exports.displayAddPage = (req, res, next) => {
     res.render('incident/add', {
-        title: 'Add incident' 
+        title: 'Add Incident' 
     });
 }
 

@@ -7,49 +7,40 @@
             <form class="form" method="post" >
     
                 <h1 class="text-light">Insert Incident</h1><br>
-    
-                <ul>
+                
+                <div class="form-group">
+                    <input class="form-control" placeholder="Customer Name" type="text" name="customer" id="customerTextField" required>
+                    <label class="visually-hidden" for="customerTextField">Customer Name</label>
+                </div>
 
-                    <div class="form-group">
-                        <li>
-                            <input class="form-control" placeholder="Customer Name" type="text" name="customer" id="courseTextField" required>
-                            <label class="visually-hidden" for="courseTextField">Customer Name</label>
-                        </li>
-                    </div>
-
-                    <div class="form-group">
-                        <li>
-                            <input class="form-control" placeholder="incident Title" type="text" name="title" id="titleTextField" required>
-                            <label class="visually-hidden" for="titleTextField">Incident Title</label>
-                        </li>
-                    </div>
+                
+                <div class="form-group">
+                    <input class="form-control" placeholder="Date of Incident" type="date" name="date" id="dateTextField" required>
+                    <label class="visually-hidden" for="dateTextField">Date of Incident</label>
+                </div>
+                
+                <div class="form-group">
+                    <input class="form-control" placeholder="Time of Incident" type="text" name="time" id="timeTextField" required>
+                    <label class="visually-hidden" for="timeTextField">Time of Incident</label>
+                </div>
+                
+                <div class="form-group">
+                    <input class="form-control" placeholder="Incident Location" type="text" name="location" id="locationTextField" required>
+                    <label class="visually-hidden" for="locationTextField">Location of Incident</label>
+                </div>
     
-                    <div class="form-group">
-                        <li>
-                            <textarea class="form-control" placeholder="Description" type="text" name="description" id="descriptionTextField" required></textarea>
-                            <label class="visually-hidden" for="descriptionTextField">Incident Description</label>
-                        </li>
-                    </div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Name of Reporter" type="text" name="reporter" id="reporterTextField" required>
+                    <label class="visually-hidden" for="reporterTextField">Reported By</label>
+                </div>
+                
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Description" type="text" name="description" id="descriptionTextField" required></textarea>
+                    <label class="visually-hidden" for="descriptionTextField">Incident Description</label>
+                </div>
                     
-                    <div class="form-group">
-                        <li>
-                            <input class="form-control" placeholder="Time of Incident" type="text" name="time" id="weightTextField" required>
-                            <label class="visually-hidden" for="weightTextField">Time of Incident</label>
-                        </li>
-                    </div>
 
-                    <div class="form-group">
-                        <li>
-                            <input class="form-control" placeholder="Due Date" type="date" name="due" id="location" required>
-                            <label class="visually-hidden" for="dueTextField">Location of Incident</label>
-                        </li>
-                    </div>
-                    <div class="form-group">
-                        <li>
-                            <input class="form-control" placeholder="Reported By" type="text" name="reportedBy" id="dueTextField" required>
-                            <label class="visually-hidden" for="dueTextField">Reported By</label>
-                        </li>
-                    </div>
+
 
                     
 
@@ -60,8 +51,6 @@
                     <a href="/incident-list" class="btn btn-danger">
                         <i class="fas fa-undo"></i>Cancel
                     </a>
-
-                </ul>
     
             </form>
     
