@@ -4,65 +4,55 @@
     <div class="jumbotron jumbotron-fluid flex-shrink-0 py-5">
         <div class="container">
 
-            <form class="form" method="post">
+            <form class="form" method="post" >
     
-                <h1>Edit Incident</h1>
-    
-                <ul>
-
-                    <div class="form-group">
-                        <li>
-                            <input class="form-control" placeholder="Course Name" type="text" name="course" id="courseTextField" value="<%= incident.course%>" required>
-                            <label class="visually-hidden" for="courseTextField">Course Name</label>
-                        </li>
-                    </div>
-
-                    <div class="form-group">
-                        <li>
-                            <input class="form-control" placeholder="incident Title" type="text" name="title" id="titleTextField" value="<%= incident.title%>" required>
-                            <label class="visually-hidden" for="titleTextField">incident Title</label>
-                        </li>
-                    </div>
-    
-                    <div class="form-group">
-                        <li>
-                            <textarea class="form-control" placeholder="Description" type="text" name="description" id="descriptionTextField" required><%= incident.description%></textarea>
-                            <label class="visually-hidden" for="descriptionTextField">incident Description</label>
-                        </li>
-                    </div>
-    
-                    <div class="form-group">
-                        <li>
-                            <input class="form-control" placeholder="Weight" type="number" min="0" max="100" name="weight" id="weightTextField" value="<%= incident.weight%>" required>
-                            <label class="visually-hidden" for="weightTextField">incident Weight</label>
-                        </li>
-                    </div>
-                        
-                     
-                    <div class="form-group">
-                        <li>
-                            <input class="form-control" placeholder="Due Date" type="date" name="due" id="dueTextField" value="<%= incident.due%>" required>
-                            <label class="visually-hidden" for="dueTextField">incident Due Date</label>
-                        </li>
-                    </div>
-
-
-                    <button class="btn btn-primary" type="submit">
-                        <i class="fas fa-edit"></i>Submit
-                    </button>
+                <h1 class="text-light">Edit Incident</h1><br>
                 
-                    <a href="/incident-list" class="btn btn-danger">
-                        <i class="fas fa-undo"></i>Cancel
-                    </a>
-
-                </ul>
-
+                <div class="form-group">
+                    <input class="form-control" placeholder="Customer Name" type="text" name="customer" id="customerTextField" value="<%= incident.customer%>" required>
+                    <label class="visually-hidden" for="customerTextField">Customer Name</label>
+                </div>
+                
+                <div class="form-group">
+                    <input class="form-control" placeholder="Date of Incident" type="date" name="date" id="dateTextField" value="<%= incident.date%>" required>
+                    <label class="visually-hidden" for="dateTextField">Date of Incident</label>
+                </div>
+                
+                <div class="form-group">
+                    <input class="form-control" placeholder="Time of Incident" type="text" name="time" id="timeTextField" value="<%= incident.time%>" required>
+                    <label class="visually-hidden" for="timeTextField">Time of Incident</label>
+                </div>
+                
+                <div class="form-group">
+                    <input class="form-control" placeholder="Incident Location" type="text" name="location" id="locationTextField" value="<%= incident.location%>" required>
+                    <label class="visually-hidden" for="locationTextField">Location of Incident</label>
+                </div>
+    
+                <div class="form-group">
+                    <input class="form-control" placeholder="Name of Reporter" type="text" name="reporter" id="reporterTextField" value="<%= incident.reporter%>" required>
+                    <label class="visually-hidden" for="reporterTextField">Reported By</label>
+                </div>
+                
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Description" type="text" name="description" id="descriptionTextField" required><%= incident.description%></textarea>
+                    <label class="visually-hidden" for="descriptionTextField">Incident Description</label>
+                </div>
+                
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i>Submit
+                </button>
+            
+                <a href="/incident-list" class="btn btn-danger">
+                    <i class="fas fa-undo"></i>Cancel
+                </a>
+                
             </form>
-
+    
         </div>
     </div>
-
+    
 </main>
+
 
 <%- include ('../partials/bottom_nav.ejs') %>
 <%- include ('../partials/footer.ejs') %>
