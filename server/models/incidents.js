@@ -5,7 +5,7 @@ let incidentModel = mongoose.Schema({
     customer: String,
     date: String,
     time: String,
-    location: Number,
+    location: String,
     reporter: String,
     description: String
     },
