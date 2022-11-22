@@ -10,7 +10,7 @@
 
             <h1 style="color: var(--bs-white);"><%= title %></h1>
 
-            <a href="/incident-list/add" class="btn btn-success btn-lg mb-4" role="button">Add incident</a>
+            <a href="/incident-list/add" class="btn btn-success btn-lg mb-4" role="button">Add Incident</a>
             
             <div class="table-responsive">
 
@@ -18,11 +18,12 @@
                     <thead class="text-center">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Class</th>
-                            <th scope="col">Title</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Reported By</th>
                             <th scope="col">Description</th>
-                            <th scope="col">Weight</th>
-                            <th scope="col">Due Date</th>
                             <td scope="col" id="editHeader"></td>
                             <td scope="col" id="deleteHeader"></td>
                         </tr>
@@ -36,11 +37,12 @@
                             <!-- display column number -->
                             <td scope="col"><%= count+1 %></th>
                             <!-- display incident documents -->
-                            <td scope="col"><%= incidentsList[count].course %></td>
-                            <td scope="col"><%= incidentsList[count].title %></td>
+                            <td scope="col"><%= incidentsList[count].customer %></td>
+                            <td scope="col"><%= incidentsList[count].date %></td>
+                            <td scope="col"><%= incidentsList[count].time %></td>
+                            <td scope="col"><%= incidentsList[count].location %></td>
+                            <td scope="col"><%= incidentsList[count].reporter %></td>
                             <td scope="col"><%= incidentsList[count].description %></td>
-                            <td scope="col"><%= incidentsList[count].weight %></td>
-                            <td scope="col"><%= incidentsList[count].due %></td>
 
                             <!-- Edit and Delete buttons used for delete and edit operations -->
                             <td scope="col"><a href="/incident-list/edit/<%= incidentsList[count]._id %>" class="btn btn-primary" role="button">Edit</a></td>

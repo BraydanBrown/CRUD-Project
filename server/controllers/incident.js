@@ -14,7 +14,7 @@ module.exports.displayDatabase = (req, res, next) => {
         else {
             // console.log(incidentsList);
             res.render('incident/list', {
-                title:'incident List', 
+                title:'Incident List', 
                 incidentsList: incidentsList
             });
         }
@@ -24,21 +24,22 @@ module.exports.displayDatabase = (req, res, next) => {
 // Display add page
 module.exports.displayAddPage = (req, res, next) => {
     res.render('incident/add', {
-        title: 'Add incident' 
+        title: 'Add Incident' 
     });
 }
 
 // Process add page
 module.exports.processAddPage = (req, res, next) => {
-    let newincident = incident({
-        "course": req.body.course,
-        "title": req.body.title,
-        "description": req.body.description,
-        "weight": req.body.weight,
-        "due": req.body.due
+    let newIncident = incident({
+        "customer": req.body.customer,
+        "date": req.body.date,
+        "time": req.body.time,
+        "location": req.body.location,
+        "reporter": req.body.reporter,
+        "description": req.body.description
     });
 
-    incident.create(newincident, (err, incident) => {
+    incident.create(newIncident, (err, incident) => {
         if(err) {
             console.log(err);
             res.end(err);
@@ -57,7 +58,7 @@ module.exports.displayEditPage = (req, res, next) => {
             res.end(err);
         } else {
             res.render('incident/edit', {
-                title: 'Edit incident',
+                title: 'Edit Incident',
                 incident: incidentToEdit
             });
         }
@@ -67,16 +68,17 @@ module.exports.displayEditPage = (req, res, next) => {
 // Process edit page
 module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id;
-    let updateincident = incident({
+    let updateIncident = incident({
         "_id": id,
-        "course": req.body.course,
-        "title": req.body.title,
-        "description": req.body.description,
-        "weight": req.body.weight,
-        "due": req.body.due
+        "customer": req.body.customer,
+        "date": req.body.date,
+        "time": req.body.time,
+        "location": req.body.location,
+        "reporter": req.body.reporter,
+        "description": req.body.description
     });
 
-    incident.updateOne({_id: id}, updateincident, (err) => {
+    incident.updateOne({_id: id}, updateIncident, (err) => {
         if(err) {
             console.log(err);
             res.end(err);

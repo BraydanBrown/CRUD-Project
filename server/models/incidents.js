@@ -2,11 +2,12 @@ let mongoose = require('mongoose');
 
 // create an incident model
 let incidentModel = mongoose.Schema({
-    course: String,
-    title: String,
-    description: String,
-    weight: Number,
-    due: String,
+    customer: String,
+    date: String,
+    time: String,
+    location: String,
+    reporter: String,
+    description: String
     },
     {
         collection: "incidents"
