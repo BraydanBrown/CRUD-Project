@@ -31,11 +31,12 @@ module.exports.displayAddPage = (req, res, next) => {
 // Process add page
 module.exports.processAddPage = (req, res, next) => {
     let newincident = incident({
-        "course": req.body.course,
-        "title": req.body.title,
-        "description": req.body.description,
-        "weight": req.body.weight,
-        "due": req.body.due
+        "customer": req.body.customer,
+        "date": req.body.date,
+        "time": req.body.time,
+        "location": req.body.location,
+        "reporter": req.body.reporter,
+        "description": req.body.description
     });
 
     incident.create(newincident, (err, incident) => {
@@ -69,11 +70,12 @@ module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id;
     let updateincident = incident({
         "_id": id,
-        "course": req.body.course,
-        "title": req.body.title,
-        "description": req.body.description,
-        "weight": req.body.weight,
-        "due": req.body.due
+        "customer": req.body.customer,
+        "date": req.body.date,
+        "time": req.body.time,
+        "location": req.body.location,
+        "reporter": req.body.reporter,
+        "description": req.body.description
     });
 
     incident.updateOne({_id: id}, updateincident, (err) => {
