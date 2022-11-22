@@ -5,12 +5,12 @@
 <main>
     <div class="jumbotron jumbotron-fluid flex-shrink-0 py-5">
 
-        <!-- DISPLAYS "assignments" COLLECTION -->
+        <!-- DISPLAYS "incidents" COLLECTION -->
         <div class="container bg-dark border rounded border-0 p-4 p-md-5 bg-opacity-100 overflow-hidden">
 
             <h1 style="color: var(--bs-white);"><%= title %></h1>
 
-            <a href="/assignment-list/add" class="btn btn-success btn-lg mb-4" role="button">Add Assignment</a>
+            <a href="/incident-list/add" class="btn btn-success btn-lg mb-4" role="button">Add incident</a>
             
             <div class="table-responsive">
 
@@ -30,21 +30,21 @@
 
                     <tbody class="text-center align-middle">
 
-                        <!-- loops through assignment collection, displaying each document -->
-                        <% for(let count=0; count < assignmentsList.length; count++) { %>
+                        <!-- loops through incident collection, displaying each document -->
+                        <% for(let count=0; count < incidentsList.length; count++) { %>
                         <tr>
                             <!-- display column number -->
                             <td scope="col"><%= count+1 %></th>
-                            <!-- display assignment documents -->
-                            <td scope="col"><%= assignmentsList[count].course %></td>
-                            <td scope="col"><%= assignmentsList[count].title %></td>
-                            <td scope="col"><%= assignmentsList[count].description %></td>
-                            <td scope="col"><%= assignmentsList[count].weight %></td>
-                            <td scope="col"><%= assignmentsList[count].due %></td>
+                            <!-- display incident documents -->
+                            <td scope="col"><%= incidentsList[count].course %></td>
+                            <td scope="col"><%= incidentsList[count].title %></td>
+                            <td scope="col"><%= incidentsList[count].description %></td>
+                            <td scope="col"><%= incidentsList[count].weight %></td>
+                            <td scope="col"><%= incidentsList[count].due %></td>
 
                             <!-- Edit and Delete buttons used for delete and edit operations -->
-                            <td scope="col"><a href="/assignment-list/edit/<%= assignmentsList[count]._id %>" class="btn btn-primary" role="button">Edit</a></td>
-                            <td scope="col"><a href="/assignment-list/delete/<%= assignmentsList[count]._id %>" class="btn btn-danger" role="button">Delete</a></td>                      
+                            <td scope="col"><a href="/incident-list/edit/<%= incidentsList[count]._id %>" class="btn btn-primary" role="button">Edit</a></td>
+                            <td scope="col"><a href="/incident-list/delete/<%= incidentsList[count]._id %>" class="btn btn-danger" role="button">Delete</a></td>                      
                         </tr>
                         <% } %>
 

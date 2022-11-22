@@ -2,13 +2,13 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
-//connect to assignment Model
-let assignment = require('../models/assignments');
+//connect to incident Model
+let incident = require('../models/incidents');
 
 //connect to Controller folder, which has the CRUD functions
-let databaseController = require('../controllers/assignment');
+let databaseController = require('../controllers/incident');
 
-// Get route for the assignment list page - READ Operation
+// Get route for the incident list page - READ Operation
 // READ OPERATION
 router.get('/', databaseController.displayDatabase);
 

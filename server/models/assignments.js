@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
-// create an assignment model
-let assignmentModel = mongoose.Schema({
+// create an incident model
+let incidentModel = mongoose.Schema({
     course: String,
     title: String,
     description: String,
@@ -9,9 +9,9 @@ let assignmentModel = mongoose.Schema({
     due: String,
     },
     {
-        collection: "assignments"
+        collection: "incidents"
     }
 );
 
-module.exports = mongoose.model('assignment', assignmentModel);
+module.exports = mongoose.model('incident', incidentModel);
 
