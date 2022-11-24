@@ -3,11 +3,11 @@ let router = express.Router();
 let mongoose = require('mongoose');
 
 //connect with database model
-let incident = require('../models/incidents');
+let incidentData = require('../models/incidents');
 
 /* CRUD Operations */
 module.exports.displayDatabase = (req, res, next) => {
-    incident.find((err, incidentsList) => {
+    incidentData.find((err, incidentsList) => {
         if(err) {
             return console.error(err);
         }
@@ -30,7 +30,7 @@ module.exports.displayAddPage = (req, res, next) => {
 
 // Process add page
 module.exports.processAddPage = (req, res, next) => {
-    let newIncident = incident({
+    let newIncident = incidentData({
         "customer": req.body.customer,
         "date": req.body.date,
         "time": req.body.time,
@@ -39,7 +39,7 @@ module.exports.processAddPage = (req, res, next) => {
         "description": req.body.description
     });
 
-    incident.create(newIncident, (err, incident) => {
+    incidentData.create(newIncident, (err, incidentData) => {
         if(err) {
             console.log(err);
             res.end(err);
@@ -52,14 +52,14 @@ module.exports.processAddPage = (req, res, next) => {
 // Display edit page
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
-    incident.findById(id, (err, incidentToEdit) => {
+    incidentData.findById(id, (err, incidentToEdit) => {
         if(err) {
             console.log(err);
             res.end(err);
         } else {
             res.render('incident/edit', {
                 title: 'Edit Incident',
-                incident: incidentToEdit
+                incidentData: incidentToEdit
             });
         }
     });
@@ -68,7 +68,7 @@ module.exports.displayEditPage = (req, res, next) => {
 // Process edit page
 module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id;
-    let updateIncident = incident({
+    let updateIncident = incidentData({
         "_id": id,
         "customer": req.body.customer,
         "date": req.body.date,
@@ -78,7 +78,7 @@ module.exports.processEditPage = (req, res, next) => {
         "description": req.body.description
     });
 
-    incident.updateOne({_id: id}, updateIncident, (err) => {
+    incidentData.updateOne({_id: id}, updateIncident, (err) => {
         if(err) {
             console.log(err);
             res.end(err);
@@ -91,7 +91,7 @@ module.exports.processEditPage = (req, res, next) => {
 // Perform delete action
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
-    incident.deleteOne({_id: id}, (err) => {
+    incidentData.deleteOne({_id: id}, (err) => {
         if(err) {
             console.log(err);
             res.end(err);
