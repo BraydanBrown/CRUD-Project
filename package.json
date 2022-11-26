@@ -1,7 +1,7 @@
 {
   "name": "myapp",
   "version": "0.0.0",
-  "description": "Portfolio website made with ExpressJS",
+  "description": "",
   "private": true,
   "scripts": {
     "start": "node ./www.js"
