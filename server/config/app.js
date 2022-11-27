@@ -3,13 +3,13 @@ let createError = require('http-errors');
 let express = require('express');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let mongoose = require('mongoose');
 
 //config mongoDB
-let mongoose = require('mongoose');
-let DB = require('./db');
+const uri = process.env.URI;
+mongoose.connect(uri);
 
 //point mongoose to DB URI
-mongoose.connect(DB.URI);
 let mongDB = mongoose.connection;
 mongDB.on('error', console.error.bind(console, 'Connection Error:'));
 mongDB.once('open', ()=> {
