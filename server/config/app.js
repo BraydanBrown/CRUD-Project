@@ -7,9 +7,9 @@ let mongoose = require('mongoose');
 
 //config mongoDB
 const uri = process.env.URI;
+//point mongoose to DB URI
 mongoose.connect(uri);
 
-//point mongoose to DB URI
 let mongDB = mongoose.connection;
 mongDB.on('error', console.error.bind(console, 'Connection Error:'));
 mongDB.once('open', ()=> {
@@ -31,7 +31,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../../public'))); //.. -> go up one directory
+app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 //Add new router modules
@@ -39,7 +39,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 //incident list ROUTE, DISPLAYS incident list database
-app.use('/incident-list', incidentsRouter); //localhost:3000/index/incident-list
+app.use('/incident-list', incidentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
