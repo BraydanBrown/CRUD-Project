@@ -9,33 +9,33 @@
                 <h1 class="text-light">Edit Incident</h1><br>
                 
                 <div class="form-group">
+                    <label class="text-light" for="customerTextField">Customer Name</label>
                     <input class="form-control" placeholder="Customer Name" type="text" name="customer" id="customerTextField" value="<%= incidentData.customer%>" required>
-                    <label class="visually-hidden" for="customerTextField">Customer Name</label>
                 </div>
                 
                 <div class="form-group">
+                    <label class="text-light" for="dateTextField">Date of Incident</label>
                     <input class="form-control" placeholder="Date of Incident" type="date" name="date" id="dateTextField" value="<%= incidentData.date%>" required>
-                    <label class="visually-hidden" for="dateTextField">Date of Incident</label>
                 </div>
                 
                 <div class="form-group">
+                    <label class="text-light" for="timeTextField">Time of Incident</label>
                     <input class="form-control" placeholder="Time of Incident" type="text" name="time" id="timeTextField" value="<%= incidentData.time%>" required>
-                    <label class="visually-hidden" for="timeTextField">Time of Incident</label>
                 </div>
                 
                 <div class="form-group">
+                    <label class="text-light" for="locationTextField">Location of Incident</label>
                     <input class="form-control" placeholder="Incident Location" type="text" name="location" id="locationTextField" value="<%= incidentData.location%>" required>
-                    <label class="visually-hidden" for="locationTextField">Location of Incident</label>
                 </div>
     
                 <div class="form-group">
+                    <label class="text-light" for="reporterTextField">Reported By</label>
                     <input class="form-control" placeholder="Name of Reporter" type="text" name="reporter" id="reporterTextField" value="<%= incidentData.reporter%>" required>
-                    <label class="visually-hidden" for="reporterTextField">Reported By</label>
                 </div>
                 
                 <div class="form-group">
+                    <label class="text-light" for="descriptionTextField">Incident Description</label>
                     <textarea class="form-control" placeholder="Description" type="text" name="description" id="descriptionTextField" required><%= incidentData.description%></textarea>
-                    <label class="visually-hidden" for="descriptionTextField">Incident Description</label>
                 </div>
                 
                 <button class="btn btn-primary" type="submit">
