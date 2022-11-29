@@ -1,6 +1,7 @@
 <!--NavBar -->
 <nav class="navbar navbar-dark navbar-expand-lg pb-3 bg-dark">
     <div class="container">
+      <a class="navbar-brand" href="/">Crash and Dash Insurance</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -8,7 +9,7 @@
         <ul class="nav navbar-nav ms-auto"> 
   
           <li class="nav-item">
-            <% if (title == "Splash") { %>
+            <% if (title == "Landing Page") { %>
               <a class="nav-link active" href="/home">
             <% } else { %>
               <a class="nav-link" href="/home">
@@ -17,7 +18,7 @@
           </li>
 
           <li class="nav-item">
-            <% if (title == "Incident List") { %>
+            <% if (title == "Incident Records") { %>
               <a class="nav-link active" href="/incident-list">
             <% } else { %>
               <a class="nav-link" href="/incident-list">

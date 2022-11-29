@@ -14,7 +14,7 @@ module.exports.displayDatabase = (req, res, next) => {
         else {
             // console.log(incidentsList);
             res.render('incident/list', {
-                title:'Incident List', 
+                title:'Incident Records', 
                 incidentsList: incidentsList
             });
         }

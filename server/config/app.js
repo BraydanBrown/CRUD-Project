@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-//incident LIST ROUTE, DISPLAYS incident LIST DATABASE
+//incident list ROUTE, DISPLAYS incident list database
 app.use('/incident-list', incidentsRouter); //localhost:3000/index/incident-list
 
 // catch 404 and forward to error handler

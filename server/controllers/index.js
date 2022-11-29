@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.Router();
 
-// Displays the splash page
-module.exports.displaySplashPage = (req, res, next) => {
-    res.render('index', { title: 'Splash' });
+// Displays the landing page page
+module.exports.displayLandingPage = (req, res, next) => {
+    res.render('index', { title: 'Landing Page' });
 }
