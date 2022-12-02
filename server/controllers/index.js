@@ -7,7 +7,7 @@ let user = userModel.user;
 
 // Displays the landing page page
 module.exports.displayLandingPage = (req, res, next) => {
-    res.render('index', { title: 'Landing Page' });
+    res.render('index', { title: 'Landing Page', displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.displayLoginPage = (req, res, next) => {
@@ -89,6 +89,9 @@ module.exports.processRegisterPage = (req, res, next) => {
 }
 
 module.exports.performLogout = (req, res, next) => {
-    req.logout();
+    req.logout(function(err) {
+        if(err) {
+            return next(err);
+    }});
     res.redirect('/');
 }
