@@ -3,15 +3,17 @@
 
 <!-- Main Content -->
 <main>
-    <div class="jumbotron jumbotron-fluid flex-shrink-0 py-5">
-
-        <h1 class="container" style="color: var(--bs-white);"><%= title %></h1>
+    <div class="jumbotron jumbotron-fluid flex-shrink-0 py-5 text-light">
 
         <!-- DISPLAYS "incidents" COLLECTION -->
         <div class="container bg-dark border rounded border-0 p-4 p-md-5 bg-opacity-100 overflow-hidden">
 
-            <a href="/incident-list/add" class="btn btn-success btn-lg mb-4" role="button">Add Incident</a>
-            
+            <h1 class="mb-4"><%= title %></h1>
+
+            <% if (typeof displayName == 'string' && displayName) { %>
+                <a href="/incident-list/add" class="btn btn-success btn-lg mb-4" role="button">Add Incident</a>
+            <% } %>
+
             <div class="table-responsive">
 
                 <table class="table table-hover table-dark">
@@ -24,8 +26,10 @@
                             <th scope="col">Location</th>
                             <th scope="col">Reported By</th>
                             <th scope="col">Description</th>
-                            <td scope="col" id="editHeader"><i class = "fas fa-pencil-alt"></i></td>
-                            <td scope="col" id="deleteHeader"><i class = "fas fa-trash-alt"></i></td>
+                            <% if (typeof displayName == 'string' && displayName) { %>
+                                <td scope="col" id="editHeader"><i class = "fas fa-pencil-alt"></i></td>
+                                <td scope="col" id="deleteHeader"><i class = "fas fa-trash-alt"></i></td>
+                            <% } %>
                         </tr>
                     </thead>
 
@@ -44,9 +48,12 @@
                             <td scope="col"><%= incidentsList[count].reporter %></td>
                             <td scope="col"><%= incidentsList[count].description %></td>
 
-                            <!-- Edit and Delete buttons used for delete and edit operations -->
-                            <td scope="col"><a href="/incident-list/edit/<%= incidentsList[count]._id %>" class="btn btn-primary" role="button">Edit</a></td>
-                            <td scope="col"><a href="/incident-list/delete/<%= incidentsList[count]._id %>" class="btn btn-danger" role="button">Delete</a></td>                      
+                            <!-- if not logged in edit and delete operations will not appear -->
+                            <% if (typeof displayName == 'string' && displayName) { %>
+                                <!-- Edit and Delete buttons used for delete and edit operations -->
+                                <td scope="col"><a href="/incident-list/edit/<%= incidentsList[count]._id %>" class="btn btn-primary" role="button">Edit</a></td>
+                                <td scope="col"><a href="/incident-list/delete/<%= incidentsList[count]._id %>" class="btn btn-danger" role="button">Delete</a></td>   
+                            <% } %>
                         </tr>
                         <% } %>
 
