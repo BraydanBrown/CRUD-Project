@@ -2,39 +2,39 @@
 <%- include('../partials/main_nav.ejs') %>
 <main>
     <div class="jumbotron jumbotron-fluid flex-shrink-0 py-5">
-        <div class="container">
+        <div class="container text-light">
 
             <form class="form" method="post" >
     
-                <h1 class="text-light">Edit Incident</h1><br>
+                <h1>Edit Incident</h1><br>
                 
                 <div class="form-group">
-                    <label class="text-light" for="customerTextField">Customer Name</label>
+                    <label for="customerTextField">Customer Name</label>
                     <input class="form-control" placeholder="Customer Name" type="text" name="customer" id="customerTextField" value="<%= incidentData.customer%>" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="text-light" for="dateTextField">Date of Incident</label>
+                    <label for="dateTextField">Date of Incident</label>
                     <input class="form-control" placeholder="Date of Incident" type="date" name="date" id="dateTextField" value="<%= incidentData.date%>" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="text-light" for="timeTextField">Time of Incident</label>
+                    <label for="timeTextField">Time of Incident</label>
                     <input class="form-control" placeholder="Time of Incident" type="time" name="time" id="timeTextField" value="<%= incidentData.time%>" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="text-light" for="locationTextField">Location of Incident</label>
+                    <label for="locationTextField">Location of Incident</label>
                     <input class="form-control" placeholder="Incident Location" type="text" name="location" id="locationTextField" value="<%= incidentData.location%>" required>
                 </div>
     
                 <div class="form-group">
-                    <label class="text-light" for="reporterTextField">Reported By</label>
+                    <label for="reporterTextField">Reported By</label>
                     <input class="form-control" placeholder="Name of Reporter" type="text" name="reporter" id="reporterTextField" value="<%= incidentData.reporter%>" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="text-light" for="descriptionTextField">Incident Description</label>
+                    <label for="descriptionTextField">Incident Description</label>
                     <textarea class="form-control" placeholder="Description" type="text" name="description" id="descriptionTextField" required><%= incidentData.description%></textarea>
                 </div>
                 
