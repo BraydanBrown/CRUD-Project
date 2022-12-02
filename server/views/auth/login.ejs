@@ -1,7 +1,7 @@
-<%- include('partials/header.ejs') %>
-<%- include('partials/main_nav.ejs') %>
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/main_nav.ejs') %>
 
-<main class="container">
+<main class="container text-light">
 
     <!-- Message Area -->
     <% if (message.length > 0) { %>
@@ -12,22 +12,21 @@
 
     <div class="row">
         <div class="offset-md-4 col-md-4">
-            <h1>Login</h1>
+            <h1 class>Login</h1>
             <form method="POST" autocomplete="off">
                 <fieldset class="form-group">
-                    <label for="username" class="form-control"></label>
+                    <label for="username"></label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required autofocus>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="password"></label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required> 
+                    or <a href="register">Register</a>
                 </fieldset>
                 
                 <fieldset class="form-group">
-                    <label for="password" class="form-control"></label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required> 
-                    or
-                    <a href="register">Register</a>
-
-                </fieldset>
-                <fieldset class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Login">Login</input>
+                    <input type="submit" class="btn btn-primary" value="Login"></input>
                     <a href="/">
                         <input type="button" class="btn btn-warning" value="Cancel">
                     </a>
@@ -38,5 +37,5 @@
 
 </main>
 
-<%- include ('partials/bottom_nav.ejs') %>
-<%- include ('partials/footer.ejs') %>
+<%- include ('../partials/bottom_nav.ejs') %>
+<%- include ('../partials/footer.ejs') %>
