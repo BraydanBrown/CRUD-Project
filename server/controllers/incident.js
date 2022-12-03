@@ -15,7 +15,8 @@ module.exports.displayDatabase = (req, res, next) => {
             // console.log(incidentsList);
             res.render('incident/list', {
                 title:'Incident Records', 
-                incidentsList: incidentsList
+                incidentsList: incidentsList,
+                displayName: req.user ? req.user.displayName : ''
             });
         }
     });
@@ -24,7 +25,8 @@ module.exports.displayDatabase = (req, res, next) => {
 // Display add page
 module.exports.displayAddPage = (req, res, next) => {
     res.render('incident/add', {
-        title: 'Add Incident' 
+        title: 'Add Incident',
+        displayName: req.user ? req.user.displayName : ''
     });
 }
 
@@ -59,7 +61,8 @@ module.exports.displayEditPage = (req, res, next) => {
         } else {
             res.render('incident/edit', {
                 title: 'Edit Incident',
-                incidentData: incidentToEdit
+                incidentData: incidentToEdit,
+                displayName: req.user ? req.user.displayName : ''
             });
         }
     });
