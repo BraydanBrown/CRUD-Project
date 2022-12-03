@@ -10,6 +10,10 @@ let passport = require('passport');
 let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
+let userModel = require('../models/user');
+let user = userModel.user;
+
+let app = express();
 
 //config mongoDB
 const uri = process.env.URI;
@@ -22,12 +26,11 @@ mongDB.once('open', ()=> {
   console.log("Connected to MongoDB...");
 });
 
+
 //Add new router modules
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let incidentsRouter = require('../routes/incident');
-
-let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -39,6 +42,28 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
+
+// init flash
+app.use(flash());
+
+//init 
+app.use(session({
+  secret:"SomeSecret",
+  saveUninitialized: false,
+  resave:false
+}))
+
+//implement user authentication
+passport.use(user.createStrategy());
+
+//serialize and deserialize user info
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
+module.exports = app;
+
+//init passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Add new router modules
 app.use('/', indexRouter);
@@ -62,26 +87,3 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-//init 
-app.use(session({
-  secret:"SomeSecret",
-  saveUninitialized: false,
-  resave:false
-}))
-
-// init flash
-app.use(flash());
-
-//init passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-//create user model instance
-let userModel = require('../models/user');
-let user = userModel.User;
-
-//serialize and deserialize user info
-passport.serializeUser(user.serializeUser());
-passport.deserializeUser(user.deserializeUser());
-module.exports = app;
