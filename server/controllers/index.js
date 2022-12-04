@@ -30,7 +30,7 @@ module.exports.processLoginPage = (req, res, next) => {
         }
         // is there a user login error?
         if (!user) {
-            req.flash('loginMessage', 'Authentication Error');
+            req.flash('loginMessage', 'Incorrect username or password');
             return res.redirect('/login');
         }
         req.login(user, (err) => {
