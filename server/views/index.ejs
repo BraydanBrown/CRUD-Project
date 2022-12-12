@@ -1,21 +1,27 @@
+
+<video autoplay muted loop class="myVideo">
+  <source src="photos/Tesla Crashes.mp4" type="video/mp4">
+</video>
+
 <%- include('partials/header.ejs') %>
 <%- include('partials/main_nav.ejs') %>
 
-<!-- Main Content -->
-<main>
-  <div class="jumbotron jumbotron-fluid flex-shrink-0 py-5">
-    
-    <div class="container d-flex flex-column justify-content-center">
-
-      <div class="align-self-center text-center p-4 p-lg-5" style="color: var(--bs-white);">
-        <h1 class="fw-bold text-center mb-4">Incident and Accident Reporting?<br><b class="companyName">Crash & Dash Insurance</b> has your back</h1>
-        <button class="btn btn-primary fs-5 py-2 px-4" type="button" id="splash-button" onclick="location.href='/incident-list'">Manage Incident Records</button>
-      </div>
-
+<div class="content">
+  <div class="align-self-center text-center p-4 p-lg-5" style="color: var(--bs-white);">
+      <h1 class="fw-bold text-center mb-4">Incident and Accident Reporting?<br><b class="companyName">Crash & Dash Insurance</b> has your back</h1>
+      <button class="btn btn-primary fs-5 py-2 px-4" type="button" id="splash-button" onclick="location.href='/incident-list'">Manage Incident Records</button>
     </div>
+</div>
 
-  </div>
-</main>
+<!-- Main Content -->
+
+
+
 
 <%- include ('partials/bottom_nav.ejs') %>
 <%- include ('partials/footer.ejs') %>
+
+
+
+
+
