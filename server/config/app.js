@@ -54,6 +54,11 @@ app.use(session({
   resave:false
 }))
 
+//init passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 //implement user authentication
 passport.use(user.createStrategy());
 
@@ -64,14 +69,16 @@ passport.use(new GitHubStrategy({
 },
 // function happens before successful authentication and redirection to indicent-list
 function(accessToken, refreshToken, profile, cb) {
-  // console.log(profile)
-  user.findOne({ username: profile.username }, function (err) {
+  console.log(profile)
+  user.findOne({ username: profile.username }, (err) => {
     if(err)
     {
       //there is already an existing user
+      console.log('User already exixst')
     }
-    else // create a new user in database
+    else
     {
+      console.log('no user')
       new user({
         username: profile.username,
         displayName: profile.username
@@ -79,7 +86,7 @@ function(accessToken, refreshToken, profile, cb) {
         console.log('new user: ' + newUser);
       });
     }
-    return cb(err, user);
+    // return cb(err, user);
   });
 }
 ));
@@ -88,10 +95,6 @@ function(accessToken, refreshToken, profile, cb) {
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 module.exports = app;
-
-//init passport
-app.use(passport.initialize());
-app.use(passport.session());
 
 //Add new router modules
 app.use('/', indexRouter);

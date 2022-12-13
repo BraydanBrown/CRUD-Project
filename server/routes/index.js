@@ -12,14 +12,13 @@ router.post('/login', indexController.processLoginPage);
 
 // router.get('/github', indexController.loginUsingGitGub);
 // router.get('/github', indexController.processLoginUsingGitGub);
-router.get('/github',passport.authenticate('github'));
-router.get('/github/callback', passport.authenticate('github', { failureRedirect: '/login' }),
-    function(req, res) {
-    // Successful authentication, redirect to incident-list.
-    passport.authenticate('github')(req, res, () => {
-        res.redirect('/incident-list');
-    })
+router.get('/github',passport.authenticate('github'), (req,res) => {
+    console.log('in first')
 });
+router.get('/github/callback', passport.authenticate('github'), (req,res) =>{
+        console.log('in')
+        res.redirect('/incident-list');
+    });
 
 // GET register page
 router.get('/register', indexController.displayRegisterPage);
