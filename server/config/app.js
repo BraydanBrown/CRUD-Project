@@ -8,6 +8,7 @@ let mongoose = require('mongoose');
 let session  = require('express-session');
 let passport = require('passport');
 let passportLocal = require('passport-local');
+let GitHubStrategy = require('passport-github').Strategy;
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
 let userModel = require('../models/user');
@@ -48,22 +49,52 @@ app.use(flash());
 
 //init 
 app.use(session({
-  secret:process.env.SECRET,
+  secret:"SomeSecret",
   saveUninitialized: false,
   resave:false
 }))
 
+//init passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 //implement user authentication
 passport.use(user.createStrategy());
+
+passport.use(new GitHubStrategy({
+  clientID: 'c5570618da907d4ebe25',
+  clientSecret: 'd31f021f8fcfd4bf6e5faa20f5571606d475f9bd',
+  callbackURL: "http://localhost:3000/github/callback"
+},
+// function happens before successful authentication and redirection to indicent-list
+function(accessToken, refreshToken, profile, cb) {
+  console.log(profile)
+  user.findOne({ username: profile.username }, (err) => {
+    if(err)
+    {
+      //there is already an existing user
+      console.log('User already exixst')
+    }
+    else
+    {
+      console.log('no user')
+      new user({
+        username: profile.username,
+        displayName: profile.username
+      }).save().then((newUser)=>{
+        console.log('new user: ' + newUser);
+      });
+    }
+    // return cb(err, user);
+  });
+}
+));
 
 //serialize and deserialize user info
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 module.exports = app;
-
-//init passport
-app.use(passport.initialize());
-app.use(passport.session());
 
 //Add new router modules
 app.use('/', indexRouter);
