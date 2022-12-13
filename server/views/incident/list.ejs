@@ -7,13 +7,14 @@
 
         <!-- DISPLAYS "incidents" COLLECTION -->
         <div class="container bg-dark border rounded border-0 p-4 p-md-5 bg-opacity-100 overflow-hidden">
-
+            
             <h1 class="mb-4"><%= title %></h1>
 
-            <% if (typeof displayName == 'string' && displayName) { %>
-                <a href="/incident-list/add" class="btn btn-success btn-lg mb-4" role="button">Add Incident</a>
-            <% } %>
-
+            <div class="d-flex justify-content-end">
+                <% if (typeof displayName == 'string' && displayName) { %>
+                    <a href="/incident-list/add" class="btn btn-success btn-lg mb-4 d-flex justify-content-end" role="button">Add Incident</a>
+                <% } %>
+            </div>
             <div class="table-responsive">
 
                 <table class="table table-hover table-dark">

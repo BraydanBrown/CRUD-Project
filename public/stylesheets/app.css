@@ -16,3 +16,20 @@
 {
     letter-spacing: 1px;
 } 
+
+/* Login Page */
+#GithubLogin
+{
+    background-color: #6F6BF2;
+    letter-spacing: 2px;
+}
+#GoogleLogin
+{
+    background-color: white;
+    letter-spacing: 2px;
+}
+#FacebookLogin
+{
+    background-color: #3b5998;
+    letter-spacing: 2px;
+}
