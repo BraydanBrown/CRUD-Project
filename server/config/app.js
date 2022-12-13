@@ -48,7 +48,7 @@ app.use(flash());
 
 //init 
 app.use(session({
-  secret:"SomeSecret",
+  secret:process.env.SECRET,
   saveUninitialized: false,
   resave:false
 }))
