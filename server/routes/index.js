@@ -29,12 +29,6 @@ router.get('google',
         res.redirect('/incident-list');
     });
 
-router.get('/google/callback',
-        passport.authenticate('google', {
-            successRedirect: '/incident-list',
-            failureRedirect: 'auth-login',
-        }));
-
 // GET register page
 router.get('/register', indexController.displayRegisterPage);
 router.post('/register', indexController.processRegisterPage);
