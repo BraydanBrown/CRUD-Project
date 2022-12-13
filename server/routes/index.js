@@ -4,6 +4,7 @@ let indexController = require('../controllers/index');
 const passport = require('passport');
 const { runInNewContext } = require('vm');
 const { nextTick } = require('process');
+const app = require('../config/app.js');
 require('../config/app.js')
 
 function isLoggedIn(req, res, next){

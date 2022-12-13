@@ -67,7 +67,7 @@ passport.use(user.createStrategy());
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: "https://localhost:3000/incident-list",
+  callbackURL: "http://127.0.0.1:3000/incident-list",
   scope: ['email', 'profile'],
   passReqToCallback: true,
   
