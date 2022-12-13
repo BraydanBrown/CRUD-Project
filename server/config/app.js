@@ -13,6 +13,8 @@ let flash = require('connect-flash');
 let userModel = require('../models/user');
 let user = userModel.user;
 
+var GitHubStrategy = require('passport-github').Strategy;
+
 let app = express();
 
 //config mongoDB
@@ -48,22 +50,36 @@ app.use(flash());
 
 //init 
 app.use(session({
-  secret:"SomeSecret",
+  secret:"SomeSecret", //make secret
   saveUninitialized: false,
   resave:false
 }))
 
+//init passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 //implement user authentication
 passport.use(user.createStrategy());
+
+passport.use(new GitHubStrategy({
+  clientID: 'c5570618da907d4ebe25', //make env variable
+  clientSecret: 'd31f021f8fcfd4bf6e5faa20f5571606d475f9bd', //make env variable
+  callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+},
+// function happens before successful authentication and redirection to indicent-list
+function(accessToken, refreshToken, profile, cb) {
+  user.findOne({ username: profile.username }, function (err, user) {
+    return cb(err, user);
+  });
+}
+));
 
 //serialize and deserialize user info
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 module.exports = app;
-
-//init passport
-app.use(passport.initialize());
-app.use(passport.session());
 
 //Add new router modules
 app.use('/', indexRouter);
