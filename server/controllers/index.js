@@ -17,10 +17,22 @@ module.exports.displayLoginPage = (req, res, next) => {
             message: req.flash('loginMessage'),
             displayName: req.user ? req.user.displayName : ''
         });
-    } else {
+    }else {
         return res.redirect('/');
     }
 }
+
+// module.exports.loginUsingGitGub = (req, res, next) => {
+//     router.get('/github',passport.authenticate('github'));
+// }
+
+// module.exports.processLoginUsingGitGub = (req, res, next) => {
+//     router.get('/github/callback', passport.authenticate('github', { failureRedirect: '/login' }),
+//     function(req, res) {
+//     // Successful authentication, redirect to incident-list.
+//     res.redirect('/incident-list');
+//     })(req, res, next);
+// };
 
 module.exports.processLoginPage = (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
