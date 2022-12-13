@@ -8,10 +8,14 @@ let mongoose = require('mongoose');
 let session  = require('express-session');
 let passport = require('passport');
 let passportLocal = require('passport-local');
+let GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
 let userModel = require('../models/user');
 let user = userModel.user;
+
+const GOOGLE_CLIENT_ID = '1072888664008-l1n92vvmreuhumq0605p1g6g2njpileb.apps.googleusercontent.com'
+const GOOGLE_CLIENT_SECRET = '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'
 
 let app = express();
 
@@ -53,12 +57,36 @@ app.use(session({
   resave:false
 }))
 
+//init passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 //implement user authentication
 passport.use(user.createStrategy());
 
+passport.use(new GoogleStrategy({
+  clientID: GOOGLE_CLIENT_ID,
+  clientSecret: GOOGLE_CLIENT_SECRET,
+  callbackURL: "https://localhost:3000/incident-list",
+  scope: ['email', 'profile'],
+  passReqToCallback: true,
+  
+},
+function(request, accessToken, refreshToken, profile, done) {
+    return done(null, profile);
+}
+));
+
 //serialize and deserialize user info
-passport.serializeUser(user.serializeUser());
-passport.deserializeUser(user.deserializeUser());
+//passport.serializeUser(user.serializeUser());
+//passport.deserializeUser(user.deserializeUser());
+passport.serializeUser(function(user, done){
+  done(null, user)
+})
+
+passport.deserializeUser(function(user, done){
+  done(null, user)
+})
 module.exports = app;
 
 //init passport
