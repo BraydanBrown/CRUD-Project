@@ -18,17 +18,19 @@ router.get('/auth/github/callback', passport.authenticate('github', { failureRed
     res.redirect('/');
 });
 
-// router.get('/login/google', passport.authenticate('google'));
+router.get('/login/google', passport.authenticate('google', {
+    scope: ['profile', 'email']
+}));
 
-// router.get('/oauth2/redirect/google', passport.authenticate('google', { failureRediect: '/login', failureMessage: true}), function (req, res) {
-//     res.redirect('/');
-// });
-
-router.get('/auth/twitter', passport.authenticate('twitter'));
-
-router.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login', scope: ['tweet.read', 'users.read', 'offline.access']}), function (req,res) {
+router.get('/oauth2/redirect/google', passport.authenticate('google', { failureRediect: '/login', failureMessage: true}), function (req, res) {
     res.redirect('/');
 });
+
+// router.get('/auth/twitter', passport.authenticate('twitter'));
+
+// router.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login', scope: ['tweet.read', 'users.read', 'offline.access']}), function (req,res) {
+//     res.redirect('/');
+// });
 
 // GET register page
 router.get('/register', indexController.displayRegisterPage);

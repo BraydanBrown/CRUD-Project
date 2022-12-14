@@ -80,13 +80,20 @@ passport.use(new GitHubStrategy({
   }
 ));
 
-// passport.use(new GoogleStrategy({
-//   clientID: '704700261945-tje5uumlmqupisvej048puqv7qpii798.apps.googleusercontent.com',
-//   clientSecret: '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',
-//   callbackURL: 'http://127.0.0.1:3000/oauth2/redirect/google',
-//   scope: ['email', 'profile'],
-//   state: true
-// },
+passport.use(new GoogleStrategy({
+    clientID: '704700261945-tje5uumlmqupisvej048puqv7qpii798.apps.googleusercontent.com',
+    clientSecret: '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',
+    callbackURL: 'http://127.0.0.1:3000/oauth2/redirect/google',
+    scope: ['email', 'profile'],
+    state: true
+  },
+  function(token, tokenSecret, profile, cb) {
+    user.findOne({ username: profile.email }, function (err, user) {
+      console.log(profile)
+      return cb(err, user);
+    });
+  }
+));
 
 //api key - h56szjMybOaFJY0MFITyLHP7I
 //API Key Secret - HmeM1RxeeLSsvduoFzzExJTxzU4ZkLBZ1gLoP4NjaPvCF4t74Y
@@ -95,18 +102,18 @@ passport.use(new GitHubStrategy({
 //Tjc5SFpYODVnMkRRa21XdjlyWEE6MTpjaQ - client id
 // client secret - -eI6ZmkiH6qSzo2CXMNcByy-0ibnGY0KQIKWKUJfM2f2_Kn2_s
 
-passport.use(new TwitterStrategy({
-    consumerKey: '3vrVe2h7sCa9nJ87plO988sAi',
-    consumerSecret: 'XLGnUkPveGttNkC1yLlqmnZ2Yqc6hHD3DOqLq9JkYl0z1cN2n5',
-    callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
-  },
-  function(token, tokenSecret, profile, cb) {
-    user.findOne({ username: profile }, function (err, user) {
-      console.log(profile)
-      return cb(err, user);
-    });
-  }
-));
+// passport.use(new TwitterStrategy({
+//     consumerKey: '3vrVe2h7sCa9nJ87plO988sAi',
+//     consumerSecret: 'XLGnUkPveGttNkC1yLlqmnZ2Yqc6hHD3DOqLq9JkYl0z1cN2n5',
+//     callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
+//   },
+//   function(token, tokenSecret, profile, cb) {
+//     user.findOne({ username: profile }, function (err, user) {
+//       console.log(profile)
+//       return cb(err, user);
+//     });
+//   }
+// ));
 
 //serialize and deserialize user info
 passport.serializeUser(user.serializeUser());
