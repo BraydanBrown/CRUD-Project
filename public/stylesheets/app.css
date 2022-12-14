@@ -3,54 +3,54 @@
     width: 100%;
     padding: 5% 0;
     position: relative;
-  }
-  
-  #dbForm h1 {
-    display: block;     
+}
+
+#dbForm h1 {
+    display: block;
     margin-top: 0px;
     margin-bottom: 15px;
     font-weight: 400;
     color: black;
-  }
-  
-  #dbForm {
+}
+
+#dbForm {
     background-color: white;
     padding: 5%;
     overflow: hidden;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.6);
     border-radius: 8px;
-  }
-  
-  #dbForm input,
-  #dbForm textarea {
+}
+
+#dbForm input,
+#dbForm textarea {
     box-sizing: border-box;
     border: none;
     width: 100%;
     resize: none;
     background-color: white;
     padding: 10px;
-  }
-  
-  #dbForm input {
+}
+
+#dbForm input {
     height: 35px;
-  }
-  
-  #dbForm textarea {
+}
+
+#dbForm textarea {
     height: 100px;
-  }
-  
-  #dbForm input:focus,
-  #dbForm textarea:focus {
+}
+
+#dbForm input:focus,
+#dbForm textarea:focus {
     outline: none;
-  }
-  
-  #dbForm ul {
+}
+
+#dbForm ul {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  
-  #dbForm li {
+}
+
+#dbForm li {
     min-width: 100%;
     border-style: hidden hidden solid;
     border-width: 2px;
@@ -58,4 +58,38 @@
     padding: 0;
     border-color: rgba(192, 192, 192);
     list-style: none;
-  }
+}
+
+.logo {
+    height: 70px;
+}
+
+.logo:hover {
+    opacity: 20%;
+}
+
+.companyName {
+    background: -webkit-linear-gradient(140deg, rgba(242, 230, 167, 1) 0%, rgba(191, 162, 107, 1) 81%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-item {
+    letter-spacing: 1px;
+}
+
+/* Login Page */
+#GithubLogin {
+    background-color: #6F6BF2;
+    letter-spacing: 2px;
+}
+
+#GoogleLogin {
+    background-color: white;
+    letter-spacing: 2px;
+}
+
+#FacebookLogin {
+    background-color: #3b5998;
+    letter-spacing: 2px;
+}
