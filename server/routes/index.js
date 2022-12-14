@@ -19,15 +19,12 @@ router.get('/auth/github/callback', passport.authenticate('github', { failureRed
 });
 
 // get facebook
-router.get('/auth/facebook',
-  passport.authenticate('facebook')),
+router.get('/auth/facebook', passport.authenticate('facebook')),
 
-router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/callback');
-  }),
+    res.redirect('/');
+  });
 
 // GET register page
 router.get('/register', indexController.displayRegisterPage);

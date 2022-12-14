@@ -75,10 +75,10 @@ passport.use(new GitHubStrategy({
 passport.use(new FacebookStrategy({
   clientID: '2140382186144480',
   clientSecret: 'cc7eff43c708fab2afc5cdddb49a281f',
-  callbackURL: "http://localhost:3000/auth/facebook/callback"
+  callbackURL: "http://127.0.0.1:3000/auth/facebook/callback"
 },
 function(accessToken, refreshToken, profile, cb) {
-  user.findOrCreate({ facebookId: profile.id }, function (err, user) {
+  user.findOne({ username: profile.username }, function (err, user) {
     return cb(err, user);
   });
 }
