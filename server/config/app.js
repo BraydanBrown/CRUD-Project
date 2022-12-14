@@ -14,6 +14,8 @@ let userModel = require('../models/user');
 let user = userModel.user;
 
 var GitHubStrategy = require('passport-github').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+
 
 let app = express();
 
@@ -27,7 +29,6 @@ mongDB.on('error', console.error.bind(console, 'Connection Error:'));
 mongDB.once('open', ()=> {
   console.log("Connected to MongoDB...");
 });
-
 
 //Add new router modules
 let indexRouter = require('../routes/index');
@@ -68,6 +69,22 @@ passport.use(new GitHubStrategy({
   clientSecret: 'd31f021f8fcfd4bf6e5faa20f5571606d475f9bd', //make env variable
   callbackURL: "http://127.0.0.1:3000/auth/github/callback"
 },
+
+//implement user Facebook authentication
+
+passport.use(new FacebookStrategy({
+  clientID: '2140382186144480',
+  clientSecret: 'cc7eff43c708fab2afc5cdddb49a281f',
+  callbackURL: "http://localhost:3000/auth/facebook/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  user.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    return cb(err, user);
+  });
+}
+)),
+
+
 // function happens before successful authentication and redirection to indicent-list
 function(accessToken, refreshToken, profile, cb) {
   user.findOne({ username: profile.username }, function (err, user) {
@@ -103,3 +120,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
