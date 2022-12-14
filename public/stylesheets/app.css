@@ -62,16 +62,18 @@
 
 .logo {
     height: 70px;
+    margin-top: 2%;
+    margin-left: 4%;
 }
 
 .logo:hover {
     opacity: 20%;
 }
 
-.companyName {
-    background: -webkit-linear-gradient(140deg, rgba(242, 230, 167, 1) 0%, rgba(191, 162, 107, 1) 81%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.companyName 
+{
+    color: #8C7954;
+    font-size: 65px;
 }
 
 .nav-item {
@@ -92,4 +94,25 @@
 #FacebookLogin {
     background-color: #3b5998;
     letter-spacing: 2px;
+}
+main, #navBar
+{
+    background-color: #010101; 
+}
+/* html
+{
+    background-color: #010101;
+} */
+#carPic
+{
+    height: 1080px;
+}
+.textLanding
+{
+    font-size: 55px;
+}
+#navBar
+{
+    border-bottom: #121212;
+    border-bottom: solid 2px;
 }
