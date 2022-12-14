@@ -14,6 +14,9 @@ let userModel = require('../models/user');
 let user = userModel.user;
 
 var GitHubStrategy = require('passport-github').Strategy;
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+// var TwitterStrategy = require('@superfaceai/passport-twitter-oauth2').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 
 let app = express();
 
@@ -64,16 +67,45 @@ app.use(passport.session());
 passport.use(user.createStrategy());
 
 passport.use(new GitHubStrategy({
-  clientID: 'c5570618da907d4ebe25', //make env variable
-  clientSecret: 'd31f021f8fcfd4bf6e5faa20f5571606d475f9bd', //make env variable
-  callbackURL: "http://127.0.0.1:3000/auth/github/callback"
-},
-// function happens before successful authentication and redirection to indicent-list
-function(accessToken, refreshToken, profile, cb) {
-  user.findOne({ username: profile.username }, function (err, user) {
-    return cb(err, user);
-  });
-}
+    clientID: 'c5570618da907d4ebe25', //make env variable
+    clientSecret: 'd31f021f8fcfd4bf6e5faa20f5571606d475f9bd', //make env variable
+    callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+      
+    user.findOne({ username: profile.username }, function (err, user) {
+      console.log(profile)
+      return cb(err, user);
+    });
+  }
+));
+
+// passport.use(new GoogleStrategy({
+//   clientID: '704700261945-tje5uumlmqupisvej048puqv7qpii798.apps.googleusercontent.com',
+//   clientSecret: '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',
+//   callbackURL: 'http://127.0.0.1:3000/oauth2/redirect/google',
+//   scope: ['email', 'profile'],
+//   state: true
+// },
+
+//api key - h56szjMybOaFJY0MFITyLHP7I
+//API Key Secret - HmeM1RxeeLSsvduoFzzExJTxzU4ZkLBZ1gLoP4NjaPvCF4t74Y
+//bearer - AAAAAAAAAAAAAAAAAAAAAPaqkQEAAAAAVRBFHpH%2BSLHmv5mI7cL%2F6VulaFQ%3Dc4X20YKgRoLJy2EdU3aDODLK0nI8hGJNzrIiz3cSXBcTRz23jF
+
+//Tjc5SFpYODVnMkRRa21XdjlyWEE6MTpjaQ - client id
+// client secret - -eI6ZmkiH6qSzo2CXMNcByy-0ibnGY0KQIKWKUJfM2f2_Kn2_s
+
+passport.use(new TwitterStrategy({
+    consumerKey: '3vrVe2h7sCa9nJ87plO988sAi',
+    consumerSecret: 'XLGnUkPveGttNkC1yLlqmnZ2Yqc6hHD3DOqLq9JkYl0z1cN2n5',
+    callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
+  },
+  function(token, tokenSecret, profile, cb) {
+    user.findOne({ username: profile }, function (err, user) {
+      console.log(profile)
+      return cb(err, user);
+    });
+  }
 ));
 
 //serialize and deserialize user info
