@@ -6,9 +6,11 @@ let logger = require('morgan');
 let mongoose = require('mongoose');
 
 let session  = require('express-session');
+
 let passport = require('passport');
 let passportLocal = require('passport-local');
-let localStrategy = passportLocal.Strategy;
+let LocalStrategy = passportLocal.Strategy;
+
 let flash = require('connect-flash');
 let userModel = require('../models/user');
 let user = userModel.user;
