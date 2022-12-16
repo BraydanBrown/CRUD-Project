@@ -32,6 +32,14 @@ let user = mongoose.Schema({
     update: {
         type: Date,
         default: Date.now
+    },
+    googleId: {
+        type: String,
+        default: ""
+    },
+    githubId: {
+        type: String,
+        default: ""
     }
 },
 {

@@ -24,4 +24,20 @@ router.get('/auth/github/callback', passport.authenticate('github', { failureRed
     }
 );
 
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/oauth2/redirect/google', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login', failureFlash: true, successFlash: "Welcome!"}),
+    function(req, res) {
+        res.redirect('/');
+    }
+);
+
+router.get('/auth/facebook', passport.authenticate('facebook'));
+
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/login'}),
+    function(req, res) {
+        res.redirect('/');
+    }
+);
+
 module.exports = router;

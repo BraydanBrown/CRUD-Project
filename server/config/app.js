@@ -13,8 +13,19 @@ let LocalStrategy = passportLocal.Strategy;
 
 var GitHubStrategy = require('passport-github2').Strategy;
 
-var GITHUB_CLIENT_ID = "0217eb485f219a5c1e91";
-var GITHUB_CLIENT_SECRET = "48f4f3419e7f7d0e3b37c43b39e37a39f0cbd6c7";
+var GITHUB_CLIENT_ID = process.env["gitClientID"];
+var GITHUB_CLIENT_SECRET = process.env["gitClientSecret"];
+
+// var GoogleStrategy = require('passport-google-oidc').Strategy;
+var GoogleStrategy = require('passport-google-oauth2').Strategy;
+
+var GOOGLE_CLIENT_ID = process.env["GoogleClientID"];
+var GOOGLE_CLIENT_SECRET = process.env["GoogleClientSecret"];
+
+var FacebookStrategy = require('passport-facebook').Strategy;
+
+var FACEBOOK_APP_ID = process.env["FacebookAppID"];
+var FACEBOOK_APP_SECRET = process.env["FacebookAppSecret"];
 
 let flash = require('connect-flash');
 let userModel = require('../models/user');
@@ -60,19 +71,18 @@ app.use(session({
   resave:false
 }))
 
-//implement user authentication
-passport.use(user.createStrategy());
-
 //serialize and deserialize user info
-// passport.serializeUser(user.serializeUser());
-// passport.deserializeUser(user.deserializeUser());
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
-});
+})
+
+//implement user authentication
+passport.use(user.createStrategy());
 
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
@@ -80,15 +90,39 @@ passport.use(new GitHubStrategy({
     callbackURL: "http://127.0.0.1:3000/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    // process.nextTick(function () {    
-    //   return done(null, profile);
-    user.findOne({ displayName: profile.username }, function (err, user) {
-      return cb(err, user);
+    process.nextTick(function () {    
+      return cb(null, profile);
     });
   }
 ));
 
+passport.use(new GoogleStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: 'http://127.0.0.1:3000/oauth2/redirect/google',
+    passReqToCallback: true
+  },
+  function (request, accessToken, refreshToken, profile, cb) {
+    console.log('passport callback function called');
+    console.log(profile);
 
+    process.nextTick(function () {
+      return cb(null, profile);
+    });
+  }
+));
+
+passport.use(new FacebookStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    process.nextTick(function () {
+      return cb(null, profile);
+    });
+  }
+));
 
 //init passport
 app.use(passport.initialize());
