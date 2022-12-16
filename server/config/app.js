@@ -13,8 +13,8 @@ let LocalStrategy = passportLocal.Strategy;
 
 var GitHubStrategy = require('passport-github2').Strategy;
 
-var GITHUB_CLIENT_ID = "--0217eb485f219a5c1e91--";
-var GITHUB_CLIENT_SECRET = "--48f4f3419e7f7d0e3b37c43b39e37a39f0cbd6c7--"
+var GITHUB_CLIENT_ID = "0217eb485f219a5c1e91";
+var GITHUB_CLIENT_SECRET = "48f4f3419e7f7d0e3b37c43b39e37a39f0cbd6c7";
 
 let flash = require('connect-flash');
 let userModel = require('../models/user');

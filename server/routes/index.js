@@ -16,8 +16,11 @@ router.post('/register', indexController.processRegisterPage);
 
 router.get('/logout', indexController.performLogout);
 
-router.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }),
-    function(req, res){
+router.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
+
+router.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), 
+    function(req, res) {
+        res.redirect('/');
     }
 );
 
