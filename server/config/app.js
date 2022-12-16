@@ -11,6 +11,11 @@ let passport = require('passport');
 let passportLocal = require('passport-local');
 let LocalStrategy = passportLocal.Strategy;
 
+var GitHubStrategy = require('passport-github2').Strategy;
+
+var GITHUB_CLIENT_ID = "--0217eb485f219a5c1e91--";
+var GITHUB_CLIENT_SECRET = "--48f4f3419e7f7d0e3b37c43b39e37a39f0cbd6c7--"
+
 let flash = require('connect-flash');
 let userModel = require('../models/user');
 let user = userModel.user;
@@ -59,9 +64,27 @@ app.use(session({
 passport.use(user.createStrategy());
 
 //serialize and deserialize user info
-passport.serializeUser(user.serializeUser());
-passport.deserializeUser(user.deserializeUser());
-module.exports = app;
+// passport.serializeUser(user.serializeUser());
+// passport.deserializeUser(user.deserializeUser());
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+passport.use(new GitHubStrategy({
+  clientID: GITHUB_CLIENT_ID,
+  clientSecret: GITHUB_CLIENT_SECRET,
+  callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+},
+function(accessToken, refreshToken, profile, done) {
+  process.nextTick(function () {    
+    return done(null, profile);
+  });
+}
+));
 
 //init passport
 app.use(passport.initialize());
@@ -89,3 +112,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+module.exports = app;

@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let indexController = require('../controllers/index');
+let passport = require('passport');
 
 /* GET home page */
 router.get(['/', '/home'], indexController.displayLandingPage);
@@ -14,5 +15,10 @@ router.get('/register', indexController.displayRegisterPage);
 router.post('/register', indexController.processRegisterPage);
 
 router.get('/logout', indexController.performLogout);
+
+router.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }),
+    function(req, res){
+    }
+);
 
 module.exports = router;
