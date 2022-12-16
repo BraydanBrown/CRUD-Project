@@ -87,7 +87,7 @@ passport.use(user.createStrategy());
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+    callbackURL: "https://group13projectfinal.azurewebsites.net/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
     process.nextTick(function () {    
@@ -99,7 +99,7 @@ passport.use(new GitHubStrategy({
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://127.0.0.1:3000/oauth2/redirect/google',
+    callbackURL: 'https://group13projectfinal.azurewebsites.net/oauth2/redirect/google',
     passReqToCallback: true
   },
   function (request, accessToken, refreshToken, profile, cb) {
@@ -115,7 +115,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    callbackURL: "https://group13projectfinal.azurewebsites.net/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
     process.nextTick(function () {
